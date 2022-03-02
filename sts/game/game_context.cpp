@@ -16,7 +16,7 @@
 
 #include <sts/combat/battle_context.hpp>
 
-#include <sts/game/save.hpp>
+#include "sts/common/save.hpp"
 #include <sts/game/misc.hpp>
 
 using namespace sts;
@@ -35,6 +35,10 @@ bool isCampfireRelic(RelicId r) {
 SelectScreenCard::SelectScreenCard(const Card &card) : card(card) {}
 
 SelectScreenCard::SelectScreenCard(const Card &card, int deckIdx) : card(card), deckIdx(deckIdx) {}
+
+GameContext::GameContext(const SaveFile &s) : GameContext() {
+    this->initFromSave(s);
+}
 
 GameContext::GameContext(CharacterClass cc, std::uint64_t seed, int ascension)
     : seed(seed),
@@ -537,7 +541,6 @@ void GameContext::initRelics() {
     java::Collections::shuffle(rareRelicPool.begin(), rareRelicPool.end(), java::Random(relicRng.nextLong()));
     java::Collections::shuffle(shopRelicPool.begin(), shopRelicPool.end(), java::Random(relicRng.nextLong()));
     java::Collections::shuffle(bossRelicPool.begin(), bossRelicPool.end(), java::Random(relicRng.nextLong()));
-
 }
 
 

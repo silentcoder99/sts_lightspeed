@@ -221,7 +221,6 @@ void BattleSimulator::printNormalActions(std::ostream &os) const {
 }
 
 void BattleSimulator::takeNormalAction(const std::string &action) {
-
     if (std::regex_match(action, std::regex("^end.*"))) {
         bc->endTurn();
         return;
@@ -504,7 +503,6 @@ void BattleSimulator::takeCardSelectAction(const std::string &action) {
     }
 }
 
-
 bool cardAssert(std::istringstream &iss, const CardInstance &c) {
     std::string attribute;
     iss >> attribute;
@@ -536,7 +534,6 @@ bool cardAssert(std::istringstream &iss, const CardInstance &c) {
 
     return false;
 }
-
 
 bool monsterAssert(std::istringstream &iss, const Monster &m) {
     std::string attribute;
@@ -720,8 +717,6 @@ bool BattleSimulator::doAssertCommand(const std::string &cmd) {
             const auto status = SimHelpers::getPlayerStatusForString(str);
             return value == bc->player.getStatusRuntime(status);
         }
-
-
     }
 
     // monster idx -> tok2
