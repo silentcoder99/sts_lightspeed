@@ -808,6 +808,7 @@ namespace sts {
             case CardId::MAYHEM:
             case CardId::MIND_BLAST:
             case CardId::DARK_EMBRACE:
+            case CardId::ENTRENCH:
                 return upgraded ? 1 : 2;
 
             case CardId::HAVOC:
