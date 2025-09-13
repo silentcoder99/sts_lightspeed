@@ -14,15 +14,15 @@
 namespace sts {
 
     enum class CharacterClass : std::uint8_t {
-        INVALID=0,
-        IRONCLAD,
+        IRONCLAD=0,
         SILENT,
         DEFECT,
         WATCHER,
+        INVALID,
     };
 
-    static constexpr const char* characterClassNames[] = {"INVALID", "Ironclad","Silent","Defect","Watcher"};
-    static constexpr const char* characterClassEnumNames[] = {"INVALID", "IRONCLAD","SILENT","DEFECT","WATCHER"};
+    static constexpr const char* characterClassNames[] = {"Ironclad","Silent","Defect","Watcher", "Invalid"};
+    static constexpr const char* characterClassEnumNames[] = {"IRONCLAD","SILENT","DEFECT","WATCHER", "INVALID"};
 
     static const char* getCharacterClassName(CharacterClass cc) {
         return characterClassNames[static_cast<int>(cc)];
