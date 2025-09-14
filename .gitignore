@@ -2,3 +2,4 @@
 /files/
 /.idea/
 /build/
+/third_party/nlohmann/
