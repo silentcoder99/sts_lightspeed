@@ -126,9 +126,10 @@ void Deck::obtain(GameContext &gc, Card card, int count) {
         case CardType::ATTACK:
             transformableCount += count;
             cardTypeCounts[static_cast<int>(CardType::ATTACK)] += count;
-            if (gc.hasRelic(RelicId::MOLTEN_EGG)) {
+            if (gc.hasRelic(RelicId::MOLTEN_EGG) && !card.upgraded) {
                 card.upgrade();
-            } else if (card.canUpgrade()) {
+            } 
+            if (card.canUpgrade()) {
                 upgradeableCount += count;
             }
             break;
@@ -136,9 +137,10 @@ void Deck::obtain(GameContext &gc, Card card, int count) {
         case CardType::SKILL:
             transformableCount += count;
             cardTypeCounts[static_cast<int>(CardType::SKILL)] += count;
-            if (gc.hasRelic(RelicId::TOXIC_EGG)) {
+            if (gc.hasRelic(RelicId::TOXIC_EGG) && !card.upgraded) {
                 card.upgrade();
-            } else if (card.canUpgrade()) {
+            }
+            if (card.canUpgrade()) {
                 upgradeableCount += count;
             }
             break;
@@ -146,9 +148,10 @@ void Deck::obtain(GameContext &gc, Card card, int count) {
         case CardType::POWER:
             transformableCount += count;
             cardTypeCounts[static_cast<int>(CardType::POWER)] += count;
-            if (gc.hasRelic(RelicId::FROZEN_EGG)) {
+            if (gc.hasRelic(RelicId::FROZEN_EGG) && !card.upgraded) {
                 card.upgrade();
-            } else if (card.canUpgrade()) {
+            }
+            if (card.canUpgrade()) {
                 upgradeableCount += count;
             }
             break;
