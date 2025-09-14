@@ -20,6 +20,10 @@ target_include_directories(tests PUBLIC ./)
 target_include_directories(tests PUBLIC third_party)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 
+add_executable(test apps/test.cpp ${STS_SOURCES})
+target_include_directories(test PUBLIC ./)
+target_include_directories(test PUBLIC third_party)
+
 add_executable(main apps/main.cpp ${STS_SOURCES})
 target_include_directories(main PUBLIC ./)
 target_include_directories(main PUBLIC third_party)
