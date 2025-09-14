@@ -1164,7 +1164,7 @@ void GameContext::enterBossTreasureRoom() {
     }
 
     regainControlAction = [=](GameContext &gc) {
-        gc.transitionToAct(act+1);
+        gc.transitionToAct(this->act+1);
     };
 }
 
@@ -2170,9 +2170,7 @@ Room GameContext::getEventRoomOutcomeHelper(bool lastRoomWasShop) {
 }
 
 void GameContext::damagePlayer(int amount) {
-#ifdef sts_asserts
     assert(amount > 0);
-#endif
     if (amount <= 5 && relics.has(RelicId::TORII)) {
         amount = 1;
     }
@@ -2180,9 +2178,7 @@ void GameContext::damagePlayer(int amount) {
 }
 
 void GameContext::playerLoseHp(int amount) {
-#ifdef sts_asserts
     assert(amount > 0);
-#endif
 
     if (hasRelic(RelicId::TUNGSTEN_ROD)) {
         amount -= 1;
@@ -3140,7 +3136,7 @@ void GameContext::chooseEventOption(int idx) {
                     Rewards reward;
                     reward.addGold(goldAmt);
                     reward.addRelic(RelicId::ODD_MUSHROOM);
-                    addPotionRewards(reward);
+                    this->addPotionRewards(reward);
                     reward.addCardReward(createCardReward(Room::EVENT));
                     gc.openCombatRewardScreen(reward);
                     gc.regainControlAction = returnToMapAction;
