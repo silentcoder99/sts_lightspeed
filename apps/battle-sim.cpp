@@ -4,10 +4,10 @@
 #include <iomanip>
 #include <thread>
 
-#include "combat/BattleContext.h"
-#include "convert/BattleConverter.h"
-#include "sim/ConsoleSimulator.h"
-#include "sim/search/BattleScumSearcher2.h"
+#include <sts/combat/battle_context.hpp>
+#include <sts/convert/battle_converter.hpp>
+#include <sts/sim/console_simulator.hpp>
+#include <sts/sim/search/battle_scum_searcher2.hpp>
 
 #include <nlohmann/json.hpp>
 

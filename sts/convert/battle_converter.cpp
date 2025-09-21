@@ -1,6 +1,6 @@
-#include "convert/BattleConverter.h"
-#include "combat/BattleContext.h"
-#include "game/GameContext.h"
+#include <sts/convert/battle_converter.hpp>
+#include <sts/combat/battle_context.hpp>
+#include <sts/game/game_context.hpp>
 
 #include <nlohmann/json.hpp>
 

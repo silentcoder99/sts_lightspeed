@@ -20,9 +20,13 @@ target_include_directories(tests PUBLIC ./)
 target_include_directories(tests PUBLIC third_party)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 
-add_executable(test apps/test.cpp ${STS_SOURCES})
-target_include_directories(test PUBLIC ./)
-target_include_directories(test PUBLIC third_party)
+add_executable(benchmark apps/benchmark.cpp ${STS_SOURCES})
+target_include_directories(benchmark PUBLIC ./)
+target_include_directories(benchmark PUBLIC third_party)
+
+add_executable(battle-sim apps/battle-sim.cpp ${STS_SOURCES})
+target_include_directories(battle-sim PUBLIC ./)
+target_include_directories(battle-sim PUBLIC third_party)
 
 add_executable(main apps/main.cpp ${STS_SOURCES})
 target_include_directories(main PUBLIC ./)
