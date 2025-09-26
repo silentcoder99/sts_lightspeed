@@ -130,7 +130,8 @@ namespace sts {
         void useEnergy(int amount);
         void gainEnergy(int amount);
         void increaseOrbSlots(int amount);
-        void channelOrb(Orb orb);
+        void channelOrb(BattleContext &bc, Orb orb);
+        void evokeOrb(BattleContext &bc, bool removeOrb);
         [[nodiscard]] bool hasEmptyOrb() const;
 
         void applyEndOfTurnPowers(BattleContext &bc);

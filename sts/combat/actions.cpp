@@ -353,6 +353,24 @@ Action Actions::TriggerEndOfTurnOrbsAction() {
     }};
 }
 
+Action Actions::ChannelOrb(Orb orb) {
+    return {[=] (BattleContext &bc) {
+        bc.player.channelOrb(bc, orb);
+    }};
+}
+
+Action Actions::EvokeOrb() {
+    return {[] (BattleContext &bc) {
+        bc.player.evokeOrb(bc, true);
+    }};
+}
+
+Action Actions::EvokeOrbWithoutLosingOrb() {
+    return {[] (BattleContext &bc) {
+        bc.player.evokeOrb(bc, false);
+    }};
+}
+
 Action Actions::ExhaustTopCardInHand() {
     return {[=] (BattleContext &bc) {
         bc.exhaustTopCardInHand();

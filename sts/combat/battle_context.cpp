@@ -263,7 +263,8 @@ void BattleContext::initRelics(const GameContext &gc) {
                 break;
 
             case R::CRACKED_CORE:
-                p.channelOrb(Orb::LIGHTNING);
+                // todo: correct order of cracked core, nuclear battery, symbiotic virus
+                addToBot( Actions::ChannelOrb(Orb::LIGHTNING) );
                 break;
 
             case R::CURSED_KEY:
@@ -313,7 +314,7 @@ void BattleContext::initRelics(const GameContext &gc) {
                 break;
 
             case R::NUCLEAR_BATTERY:
-                p.channelOrb(Orb::FUSION);
+                addToBot( Actions::ChannelOrb(Orb::FUSION) );
                 break;
 
             case R::ODDLY_SMOOTH_STONE:
@@ -357,7 +358,7 @@ void BattleContext::initRelics(const GameContext &gc) {
                 break;
 
             case R::SYMBIOTIC_VIRUS:
-                p.channelOrb(Orb::DARK);
+                addToBot( Actions::ChannelOrb(Orb::DARK) );
                 break;
 
             case R::TEARDROP_LOCKET:
@@ -1284,6 +1285,11 @@ void BattleContext::useSkillCard() {
             }
             break;
 
+        case CardId::DUALCAST:
+            addToBot( Actions::EvokeOrbWithoutLosingOrb() );
+            addToBot( Actions::EvokeOrb() );
+            break;
+
         case CardId::DEEP_BREATH:
             if (!cards.discardPile.empty()) {
                 onShuffle();
@@ -1510,6 +1516,10 @@ void BattleContext::useSkillCard() {
         case CardId::WARCRY:
             addToBot( Actions::DrawCards(up ? 2 : 1) );
             addToBot( Actions::WarcryAction() );
+            break;
+
+        case CardId::ZAP:
+            addToBot( Actions::ChannelOrb(Orb::LIGHTNING) );
             break;
 
         default:
@@ -2054,7 +2064,7 @@ void BattleContext::callEndOfTurnActions() {
 
     if (player.hasRelic<R::FROZEN_CORE>()) {
         if (player.hasEmptyOrb()) {
-            player.channelOrb(Orb::FROST);
+            addToBot(Actions::ChannelOrb(Orb::FROST));
         }
     }
 

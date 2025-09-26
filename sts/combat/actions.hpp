@@ -104,6 +104,10 @@ namespace sts {
         static Action MonsterStartTurnAction();
         static Action TriggerEndOfTurnOrbsAction();
 
+        static Action ChannelOrb(Orb orb);
+        static Action EvokeOrb();
+        static Action EvokeOrbWithoutLosingOrb();
+
         static Action ExhaustTopCardInHand();
         static Action ExhaustSpecificCardInHand(int idx, std::int16_t uniqueId);
 

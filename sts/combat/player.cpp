@@ -171,16 +171,41 @@ void Player::increaseOrbSlots(int amount) {
     // todo
 }
 
-void Player::channelOrb(Orb orb) {
+void Player::channelOrb(BattleContext &bc, Orb orb) {
     if (orb != Orb::LIGHTNING) {
         // todo: frost, dark, and plasma orbs
         return;
     }
 
-    orbs.push_back(orb);
+    if (orbs.size() == orbSlots) {
+        bc.addToTop( Actions::ChannelOrb(orb) );
+        bc.addToTop( Actions::EvokeOrb() );
+        return;
+    }
 
-    // todo: evoking if we are over the limit
+    orbs.push_back(orb);
 }
+
+// todo: count orbs evokes (for thunder strike, etc.)
+// todo: handle electrodynamics
+// todo: handle lock-on
+void Player::evokeOrb(BattleContext &bc, bool removeOrb) {
+    if (!orbs.empty() && orbs.front() != Orb::EMPTY) {
+        Orb orb = orbs.front();
+
+        switch (orb) {
+            case Orb::LIGHTNING:
+                bc.addToTop( Actions::DamageRandomEnemy(8 + getStatus<PS::FOCUS>()) );
+                break;
+            default:
+                break;
+        }
+
+        if (removeOrb) {
+            orbs.pop_front();
+        }
+    }
+} 
 
 bool Player::hasEmptyOrb() const {
     return false;
