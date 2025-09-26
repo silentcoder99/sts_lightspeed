@@ -33,6 +33,7 @@ void BattleContext::init(const GameContext &gc, MonsterEncounter encounterToInit
 
     initRelics(gc);
     player.energy += player.energyPerTurn;
+    player.orbSlots += gc.cc == CharacterClass::DEFECT ? 3 : 0;
 
     executeActions();
 }

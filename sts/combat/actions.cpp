@@ -328,7 +328,28 @@ Action Actions::MonsterStartTurnAction() {
 
 Action Actions::TriggerEndOfTurnOrbsAction() {
     return {[] (BattleContext &bc) {
-        // todo
+        if (!bc.player.orbs.empty()) {
+            for (Orb orb : bc.player.orbs) {
+                switch (orb) {
+                    case Orb::FROST:
+                        // todo
+                        break;
+                    case Orb::DARK:
+                        // todo
+                        break;
+                    case Orb::LIGHTNING:
+                        bc.addToBot(Actions::DamageRandomEnemy(3 + bc.player.getStatus<PS::FOCUS>()));
+                        break;
+                    case Orb::FUSION:
+                        // todo
+                        break;
+                    default:
+                        break;
+                }
+            }
+        
+            // todo implement gold plated cables
+        } 
     }};
 }
 

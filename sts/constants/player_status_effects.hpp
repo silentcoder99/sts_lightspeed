@@ -253,6 +253,14 @@ enum class Orb : uint8_t {
     LIGHTNING,
 };
 
+static constexpr const char* const orbStrings[] {
+        "EMPTY",
+        "DARK",
+        "FROST",
+        "FUSION",
+        "LIGHTNING",
+};
+
 }
 
 #endif //STS_LIGHTSPEED_PLAYERSTATUSEFFECTS_HPP

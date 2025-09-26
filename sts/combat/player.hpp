@@ -10,6 +10,7 @@
 #include <cstdint>
 #include <bitset>
 #include <map>
+#include <queue>
 
 #include <sts/constants/character_classes.hpp>
 #include <sts/constants/relic_ids.hpp>
@@ -35,6 +36,7 @@ namespace sts {
 
         Stance stance = Stance::NEUTRAL;
         int8_t orbSlots = 0;
+        std::deque<Orb> orbs;
 
         // for spire spear/shield
         std::int8_t lastTargetedMonster = 1;

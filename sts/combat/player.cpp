@@ -172,7 +172,14 @@ void Player::increaseOrbSlots(int amount) {
 }
 
 void Player::channelOrb(Orb orb) {
-    // todo
+    if (orb != Orb::LIGHTNING) {
+        // todo: frost, dark, and plasma orbs
+        return;
+    }
+
+    orbs.push_back(orb);
+
+    // todo: evoking if we are over the limit
 }
 
 bool Player::hasEmptyOrb() const {
@@ -943,6 +950,16 @@ namespace sts {
         os << "}\n";
     }
 
+    void printOrbs(std::ostream &os, const Player &p) {
+        os << "\tOrbs: {";
+
+        for (auto orb : p.orbs) {
+            os << orbStrings[static_cast<int>(orb)] << ", ";
+        }
+
+        os << "}\n";
+    }
+
     std::ostream& operator<<(std::ostream &os, const Player &p) {
         os << "Player: {\n";
 
@@ -951,6 +968,7 @@ namespace sts {
             << ") block:(" << p.block << ")\n";
 
         printStatusEffects(os, p);
+        printOrbs(os, p);
         printRelics(os, p);
         printAllInfos(os, p);
 
